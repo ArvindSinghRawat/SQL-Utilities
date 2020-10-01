@@ -102,3 +102,11 @@ ENV/
 # mypy
 .mypy_cache/
 /migrations
+
+# IDE related
+.idea/
+.vscode
+.pytest_cache/
+
+# DB related
+*.db
