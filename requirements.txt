@@ -2,6 +2,7 @@ alembic==1.4.3
 aniso8601==8.0.0
 astroid==2.4.2
 attrs==20.2.0
+autopep8==1.5.4
 bcrypt==3.2.0
 cffi==1.14.3
 click==7.1.2
