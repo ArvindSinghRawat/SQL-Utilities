@@ -26,3 +26,10 @@ class UserDto:
         "public_id": fields.String(description="User identifier",
                                    pattern=UUID_REGEX)
     })
+
+class UploadDto:
+    """
+    DTO for Upload related API
+    """
+    api = Namespace("upload",
+    description="Upload related operations")
