@@ -16,7 +16,7 @@ class UserDto:
         "email": fields.String(required=True,
                                description="User e-mail",
                                pattern=EMAIL_REGEX),
-        "username": fields.String(required=True, description="User username"),
+        "username": fields.String(required=True, description="User name"),
         "password": fields.String(required=True,
                                   description="User password",
                                   min_length=8,
