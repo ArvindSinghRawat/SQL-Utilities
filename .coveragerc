@@ -1,0 +1,12 @@
+[run]
+branch = True
+omit =
+    *flask_env/*
+
+[report]
+ignore_errors = True
+omit =
+    *flask_env/*
+
+[html]
+directory = coverage_html
