@@ -28,6 +28,16 @@ This is the project for providing utilities for SQL.
 - **PyLint and Flake** <br/>
   Pylint and Flake are used to lint the project code.
 
+## Contribution
+
+- Anyone is allowed to constribute towards this project.
+  Contributor must submit there code through PRs.
+- Linting using `Pylint` and `Flake8` is compulsory.
+- Proper Docstrings and comments are expected.
+- Proper Tests are requested with aim to provide 100% Functional and Branch coverage.
+
+> Workflows for automatic Linting and Tests check will be added in future.
+
 ## Credits
 
 - [Setup and Initial steps](https://www.freecodecamp.org/news/structuring-a-flask-restplus-web-service-for-production-builds-c2ec676de563/#security-and-authentication)
