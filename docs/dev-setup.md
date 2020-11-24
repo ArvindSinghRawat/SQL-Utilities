@@ -54,4 +54,8 @@
     * Debugger PIN: 668-259-024
   ```
 
-9. Run (Localhost Url)[http://127.0.0.1:5000/] in any web browser
+9. Run [Localhost Url](http://127.0.0.1:5000/) in any web browser <br/>
+  ![Image of Webpage received](https://github.com/ArvindSinghRawat/SQL-Utilities/blob/feature/readme/docs/resources/images/Screenshot1.jpg?raw=true)
+
+10. Execute any API served by the webpage <br/>
+  ![Image of Swagger UI](https://github.com/ArvindSinghRawat/SQL-Utilities/blob/feature/readme/docs/resources/images/Screenshot2.jpg?raw=true)
