@@ -1,10 +1,11 @@
 """
-User Model for different Users
+    User Model for different Users
 """
 from .. import db, flask_bcrypt
+from .base_model import Base
 
 
-class User(db.Model):
+class User(Base):
     """ User Model for storing user related details """
     __tablename__ = "user"
 
