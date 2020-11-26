@@ -10,13 +10,15 @@ from flask_restx import Api
 from flask import Blueprint
 
 from .main.controller.user_controller import api as user_ns
+from .main.controller.file_upload import api as upload_ns
 
 blueprint = Blueprint('api', __name__)
 
 api = Api(blueprint,
           title='SQL Utilities',
           version='0.0.1',
-          description='SQL Utilities made in Flask-RestPlus'
+          description='SQL Utilities made with Flask-RestX'
           )
 
 api.add_namespace(user_ns, path='/user')
+api.add_namespace(upload_ns, path='/upload')

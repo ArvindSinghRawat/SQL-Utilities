@@ -1,9 +1,9 @@
 """
-Module for DTOs used in project APIs
+    DTOs used in User related APIs
 """
 from flask_restx import Namespace, fields
 
-from .regex import EMAIL_REGEX, PASSWORD_REGEX, UUID_REGEX
+from ..util.regex import EMAIL_REGEX, PASSWORD_REGEX, UUID_REGEX
 
 
 class UserDto:

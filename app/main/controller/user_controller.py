@@ -12,7 +12,7 @@ Intentionally ignored:
 from flask import request
 from flask_restx import Resource
 
-from ..util.dto import UserDto
+from ..dto.user_dto import UserDto
 from ..service.user_service import save_new_user, get_all_users, get_a_user
 
 api = UserDto.api

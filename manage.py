@@ -9,7 +9,7 @@ from app import blueprint
 from app.main import create_app, db
 
 # Models
-from app.main.model import user
+from app.main.model import user, folder
 
 app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
 
