@@ -3,7 +3,7 @@
 """
 from flask_restx import Namespace, fields
 
-from .regex import EMAIL_REGEX, PASSWORD_REGEX, UUID_REGEX
+from ..util.regex import EMAIL_REGEX, PASSWORD_REGEX, UUID_REGEX
 
 
 class UserDto:
