@@ -1,3 +1,5 @@
+# pylint:disable=R0903
+
 """
     DTOs used in User related APIs
 """

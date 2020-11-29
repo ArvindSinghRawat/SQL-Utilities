@@ -1,10 +1,14 @@
+# pylint:disable=R0201, R1710
+
 """
     Controller for Uploading files
+
+Intentionally ignored:
+    R0201: method could be a function... because of syntax
 """
 
 
-from flask import request
-from flask_restx import Resource, Api, reqparse
+from flask_restx import Resource
 import werkzeug
 
 from ..dto.upload_file_dto import UploadDto

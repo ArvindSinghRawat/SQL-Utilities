@@ -1,3 +1,5 @@
+# pylint:disable=R0903
+
 """
     DTO for APIs related to Upload Files
 """

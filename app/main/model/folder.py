@@ -1,10 +1,12 @@
+# pylint:disable=E1101, R0903
+
 """
     Model for Folder names and its details
 """
 
+from sqlalchemy.dialects.mysql import TEXT
 from .base_model import Base
 from .. import db
-from sqlalchemy.dialects.mysql import TEXT
 
 
 class Folder(Base):

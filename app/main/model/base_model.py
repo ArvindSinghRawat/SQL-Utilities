@@ -1,3 +1,5 @@
+# pylint:disable=E1101, R0903
+
 """
     Base Model Class for all the ther models
 """
