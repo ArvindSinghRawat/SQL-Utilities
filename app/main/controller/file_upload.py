@@ -21,6 +21,11 @@ parser.add_argument(
     "file_name",
     type=str,
     location="form")
+parser.add_argument(
+    "user_id",
+    type=str,
+    location="form"
+)
 
 
 @api.route("/")
@@ -30,4 +35,5 @@ class UploadCsvFile(Resource):
         args = parser.parse_args()
         input_file = args["file"]
         file_name = args["file_name"]
-        upload_file(input_file, file_name)
+        user_id = args["file_name"]
+        upload_file(input_file, file_name, user_id)
