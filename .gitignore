@@ -113,3 +113,6 @@ flask_env/
 
 # DB related
 *.db
+
+# Uploads
+*uploads/
