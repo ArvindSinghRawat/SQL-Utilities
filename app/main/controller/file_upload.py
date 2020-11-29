@@ -12,7 +12,8 @@ from flask_restx import Resource
 import werkzeug
 
 from ..dto.upload_file_dto import UploadDto
-from ..service.file_upload_service import upload_file
+from ..service.file_upload_service import upload_file, validate_file_extension
+from ..util.common import create_response
 
 api = UploadDto.api
 
@@ -42,4 +43,9 @@ class UploadCsvFile(Resource):
         input_file = args["file"]
         file_name = args["file_name"]
         user_id = args["user_id"]
+        if not validate_file_extension(input_file.filename):
+            response_object = create_response(
+                'fail', 'Extension of uploaded file is not supported')
+            return response_object, 400
+
         upload_file(input_file, file_name, user_id)
