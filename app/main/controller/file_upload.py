@@ -1,5 +1,5 @@
 """
-    For Uploading files
+    Controller for Uploading files
 """
 
 
@@ -30,8 +30,10 @@ parser.add_argument(
 
 @api.route("/")
 class UploadCsvFile(Resource):
+    """Used for File Upload related APIs"""
     @api.expect(parser)
     def post(self):
+        """Used to Upload files"""
         args = parser.parse_args()
         input_file = args["file"]
         file_name = args["file_name"]

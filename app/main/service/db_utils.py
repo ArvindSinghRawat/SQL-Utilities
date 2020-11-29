@@ -1,3 +1,7 @@
+"""
+    Utilities related to Database
+"""
+
 from app.main import db
 
 
