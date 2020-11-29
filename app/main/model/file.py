@@ -11,6 +11,11 @@ from .folder import Folder
 
 
 class File(Base):
+    """Model for storing File name and location and other details
+
+    Args:
+        Base (Abstract Model): Abstract base class for all models
+    """
     id = db.Column('file_id', db.Integer, primary_key=True, autoincrement=True)
     name = db.Column('file_name', db.String(255),
                      unique=True, nullable=False)

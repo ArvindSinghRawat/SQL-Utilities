@@ -6,6 +6,7 @@ from .. import db
 
 
 class Base(db.Model):
+    """Abstract Base model for all the Models used in project"""
     __abstract__ = True
 
     created_on = db.Column(db.DateTime, default=db.func.now())

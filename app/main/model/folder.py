@@ -8,6 +8,11 @@ from sqlalchemy.dialects.mysql import TEXT
 
 
 class Folder(Base):
+    """Model for storing folder related details
+
+    Args:
+        Base (Abstract Model): Abstract base class for all models
+    """
     id = db.Column('folder_id', db.Integer,
                    primary_key=True, autoincrement=True)
     name = db.Column('folder_name', db.String(255),
@@ -17,7 +22,6 @@ class Folder(Base):
 
     # Relationships
     files = db.relationship('File', backref='container_folder', lazy=True)
-
 
     def __repr__(self):
         """Returns Folder's String Representation

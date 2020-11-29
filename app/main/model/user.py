@@ -9,7 +9,11 @@ from .base_model import Base
 
 
 class User(Base):
-    """ User Model for storing user related details """
+    """User Model for storing user related details
+
+    Args:
+        Base (Abstract Model): Abstract base class for all models
+    """
     __tablename__ = "user"
 
     id = db.Column('user_id', db.Integer, primary_key=True, autoincrement=True)
@@ -26,7 +30,7 @@ class User(Base):
 
     @property
     def password(self):
-        """Throws error on Read Access
+        """Blocks Read Access and throws error
 
         Raises:
             AttributeError: Password is a Write Only Field
