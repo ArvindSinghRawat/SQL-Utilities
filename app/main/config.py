@@ -12,8 +12,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
-    """ Base Configuration
-    """
+    """ Base Configuration """
     PROF_NAME = "base"
     DEBUG = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -22,16 +21,14 @@ class Config:
 
 
 class DevelopmentConfig(Config):
-    """ Configuration for Development Environment
-    """
+    """ Configuration for Development Environment """
     DEBUG = True
     PROF_NAME = "development"
     SQLALCHEMY_DATABASE_URI = os.environ['DEV_DB_URL']
 
 
 class TestingConfig(Config):
-    """ Configuration for Testing Environment
-    """
+    """ Configuration for Testing Environment """
     TESTING = True
     DEBUG = True
     PROF_NAME = "testing"
@@ -40,8 +37,7 @@ class TestingConfig(Config):
 
 
 class ProductionConfig(Config):
-    """ Configuration for Production Environment
-    """
+    """ Configuration for Production Environment """
     DEBUG = False
     PROF_NAME = "production"
     SQLALCHEMY_TRACK_MODIFICATIONS = True

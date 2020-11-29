@@ -1,4 +1,5 @@
-"""Init file for our Project
+"""
+    Init file for our Project
 """
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy

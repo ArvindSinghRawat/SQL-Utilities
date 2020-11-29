@@ -1,5 +1,5 @@
 """
-This module tests the Configurations
+    This module tests the Configurations
 """
 import unittest
 
@@ -26,8 +26,7 @@ class TestDevelopmentConfig(TestCase):
         return app
 
     def test_app_is_development(self):
-        """Tests that Dev App is successfully built with Debugging
-        """
+        """ Tests that Dev App is successfully built with Debugging """
         self.assertTrue(app.config['DEBUG'] is True)
         self.assertFalse(current_app is None)
 
@@ -71,8 +70,7 @@ class TestProductionConfig(TestCase):
         return app
 
     def test_app_is_production(self):
-        """Tests that the Prod App is successfully built with Debugging
-        """
+        """ Tests that the Prod App is successfully built with Debugging """
         self.assertTrue(app.config['DEBUG'] is False)
 
 
