@@ -8,7 +8,9 @@ from time import strftime
 
 from ..util.directory_traversal import create_nested_directories
 from ..util import constants
-
+from ..model.file import File
+from ..model.folder import Folder
+from .db_utils import save_changes
 
 def upload_file(file: FileStorage, file_name: str):
     """
@@ -27,5 +29,7 @@ def find_or_create_static_dir():
     current_date = datetime.now()
     parent_dir = current_date.strftime(constants.DIR_FORMAT)
     source_path = os.path.join(source_path, parent_dir)
-    print(source_path)
-    return create_nested_directories("./", source_path.split('/'))
+    target = create_nested_directories("./", source_path.split('/'))
+    new_folder = Folder(name=parent_dir, path=target)
+    save_changes(new_folder)
+    return target
