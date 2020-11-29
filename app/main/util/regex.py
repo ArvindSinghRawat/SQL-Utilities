@@ -1,5 +1,5 @@
 """
-File Containing Regex for Different Uses
+    File Containing Regex for Different Uses
 """
 PASSWORD_REGEX = r"^.*(?=.*[a-zA-Z])(?=.*?[!@£$%^&*()_+={}?:~\[\]])" + \
     r"(?=.*?[A-Z])(?=.*\d)(?=.{8,10})[a-zA-Z0-9!@£$%^&*()_+={}?:~\[\]]+$"

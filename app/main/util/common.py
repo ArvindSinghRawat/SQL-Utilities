@@ -1,5 +1,5 @@
 """
-Common utilities for the whole project
+    Common utilities for the whole project
 """
 
 from uuid import uuid4
@@ -23,4 +23,9 @@ def create_response(status: str, message: str) -> dict:
 
 
 def create_random_uuid() -> str:
+    """Creates a new random uuid4
+
+    Returns:
+        str: String object of created UUID
+    """
     return str(uuid4())
