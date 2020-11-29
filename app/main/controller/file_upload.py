@@ -41,5 +41,5 @@ class UploadCsvFile(Resource):
         args = parser.parse_args()
         input_file = args["file"]
         file_name = args["file_name"]
-        user_id = args["file_name"]
+        user_id = args["user_id"]
         upload_file(input_file, file_name, user_id)
