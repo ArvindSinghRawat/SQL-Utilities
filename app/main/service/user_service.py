@@ -4,10 +4,10 @@ Business logic for Users related operations
 import uuid
 import datetime
 
-from app.main import db
 from app.main.model.user import User
 
 from ..util.common import create_response
+from .db_utils import save_changes
 
 
 def save_new_user(data: dict) -> dict:
@@ -58,13 +58,3 @@ def get_a_user(public_id: str) -> User:
         User: User if found, otherwise None
     """
     return User.query.filter_by(public_id=public_id).first()
-
-
-def save_changes(data):
-    """Commit User data in Database
-
-    Args:
-        data (DB Entity like User): Data to be saved in Database
-    """
-    db.session.add(data)
-    db.session.commit()
