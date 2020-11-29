@@ -23,7 +23,7 @@ def upload_file(file: FileStorage, file_name: str, public_id: str):
         uniquely identify the file
     """
     target_dir = find_or_create_static_dir()
-    user = User.query.filter_by(public_id=public_id).first()
+    user = User.query.filter(User.public_id==public_id).first()
     save_and_upload_file(file_name=file_name, file=file,
                          folder=target_dir, user=user)
 
