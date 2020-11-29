@@ -17,8 +17,7 @@ class File(Base):
         Base (Abstract Model): Abstract base class for all models
     """
     id = db.Column('file_id', db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column('file_name', db.String(255),
-                     unique=True, nullable=False)
+    name = db.Column('file_name', db.String(255), nullable=False)
     masked_name = db.Column(db.String(100), unique=True,
                             default=create_random_uuid, nullable=False)
 
@@ -27,6 +26,11 @@ class File(Base):
                        db.ForeignKey('folder.folder_id'), nullable=False)
     user = db.Column('user_id', db.Integer,
                      db.ForeignKey('user.user_id'), nullable=False)
+
+    # Constraints
+    __table_args__ = (
+        db.UniqueConstraint('file_name', 'user_id', name='UK_file_and_user'),
+    )
 
     users = db.relationship(User)
     folders = db.relationship(Folder)
