@@ -1,6 +1,9 @@
 """
     User Model for different Users
 """
+
+from uuid import uuid4
+
 from .. import db, flask_bcrypt
 from .base_model import Base
 
@@ -9,13 +12,17 @@ class User(Base):
     """ User Model for storing user related details """
     __tablename__ = "user"
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column('user_id', db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(255), unique=True, nullable=False)
     registered_on = db.Column(db.DateTime, nullable=False)
-    admin = db.Column(db.Boolean, nullable=False, default=False)
-    public_id = db.Column(db.String(100), unique=True)
-    username = db.Column(db.String(50), unique=True)
-    password_hash = db.Column(db.String(100))
+    admin = db.Column('is_admin', db.Boolean, nullable=False, default=False)
+    public_id = db.Column(db.String(100), unique=True,
+                          default=uuid4, nullable=False)
+    username = db.Column(db.String(50), unique=True, nullable=False)
+    password_hash = db.Column(db.String(100), nullable=False)
+    
+    # Relationships
+    files = db.relationship('File', backref='creator', lazy=True)
 
     @property
     def password(self):
