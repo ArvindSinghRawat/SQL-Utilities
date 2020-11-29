@@ -23,7 +23,7 @@ def upload_file(file: FileStorage, file_name: str, public_id: str):
         uniquely identify the file
     """
     target_dir = find_or_create_static_dir()
-    user = User.query.filter_by(public_id=public_id).first()
+    user = User.query.filter(User.public_id == public_id).first()
     save_and_upload_file(file_name=file_name, file=file,
                          folder=target_dir, user=user)
 
@@ -75,3 +75,18 @@ def save_and_upload_file(file_name: str, file: FileStorage,
     new_file = File(name=file_name, folder=folder.id, user=user.id)
     save_changes(new_file)
     file.save(os.path.join(folder.path, new_file.masked_name))
+
+
+def validate_file_extension(filename: str) -> bool:
+    """Validates the extension of incoming file against allowed ones
+
+    Args:
+        filename (str): Name of the input file
+
+    Returns:
+        bool: True, if extension is allowed, otherwise false
+    """
+    try:
+        return filename.rsplit('.', 1)[1] in constants.ALLOWED_FILE_TYPES
+    except IndexError:
+        return False
