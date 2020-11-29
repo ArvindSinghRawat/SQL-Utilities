@@ -2,7 +2,7 @@
     User Model for different Users
 """
 
-from uuid import uuid4
+from ..util.common import create_random_uuid
 
 from .. import db, flask_bcrypt
 from .base_model import Base
@@ -17,10 +17,10 @@ class User(Base):
     registered_on = db.Column(db.DateTime, nullable=False)
     admin = db.Column('is_admin', db.Boolean, nullable=False, default=False)
     public_id = db.Column(db.String(100), unique=True,
-                          default=uuid4, nullable=False)
+                          default=create_random_uuid, nullable=False)
     username = db.Column(db.String(50), unique=True, nullable=False)
     password_hash = db.Column(db.String(100), nullable=False)
-    
+
     # Relationships
     files = db.relationship('File', backref='creator', lazy=True)
 
