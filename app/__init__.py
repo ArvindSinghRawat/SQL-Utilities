@@ -10,7 +10,7 @@ from flask_restx import Api
 from flask import Blueprint
 
 from .main.controller.user_controller import api as user_ns
-from .main.controller.file_upload import api as upload_ns
+from .main.controller.file_upload_controller import api as upload_ns
 
 blueprint = Blueprint('api', __name__)
 
