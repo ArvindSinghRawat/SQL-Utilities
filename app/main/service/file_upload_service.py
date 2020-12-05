@@ -15,7 +15,7 @@ from .db_utils import save_changes
 
 def upload_file(file: FileStorage, file_name: str, public_id: str):
     """
-    Method to Save a uploaded file in user folder
+    Method to Save a uploaded file in static folder
 
     Args:
         file (FileStorage): Uploaded File
