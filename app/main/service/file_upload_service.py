@@ -31,8 +31,10 @@ def upload_file(file: FileStorage, file_name: str, public_id: str) -> tuple:
         save_and_upload_file(file_name=file_name, file=file,
                              folder=target_dir, user=user)
     except IntegrityError:
-        return common.create_response("fail", f"'{file_name}' already exists"), 403
-    return common.create_response("success", f"Successfully Uploaded '{file_name}' file"), 201
+        return common.create_response(
+            "fail", f"'{file_name}' already exists"), 403
+    return common.create_response(
+        "success", f"Successfully Uploaded '{file_name}' file"), 201
 
 
 def find_or_create_static_dir() -> Folder:

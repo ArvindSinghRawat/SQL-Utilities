@@ -9,7 +9,6 @@ Intentionally ignored:
 
 
 from flask_restx import Resource
-import werkzeug
 
 from ..dto.upload_file_dto import UploadDto
 from ..service.file_upload_service import upload_file, validate_file_extension

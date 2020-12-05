@@ -14,6 +14,6 @@ def save_changes(data):
     try:
         db.session.add(data)
         db.session.commit()
-    except Exception as e:
+    except Exception as exception:
         db.session.rollback()
-        raise e
+        raise exception

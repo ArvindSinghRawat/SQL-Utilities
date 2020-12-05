@@ -22,4 +22,3 @@ class UploadDto:
         "file_name", required=True, location="form", type=str)
     upload_file_parser.add_argument(
         "user_id", required=True, location="form", type=str)
-
