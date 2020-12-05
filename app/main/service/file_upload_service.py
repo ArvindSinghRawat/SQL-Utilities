@@ -4,16 +4,17 @@
 import os
 from datetime import datetime
 from werkzeug.datastructures import FileStorage
+from sqlalchemy.exc import IntegrityError
 
 from ..util.directory_traversal import create_nested_directories
-from ..util import constants
+from ..util import constants, common
 from ..model.file import File
 from ..model.folder import Folder
 from ..model.user import User
 from .db_utils import save_changes
 
 
-def upload_file(file: FileStorage, file_name: str, public_id: str):
+def upload_file(file: FileStorage, file_name: str, public_id: str) -> tuple:
     """
     Method to Save a uploaded file in static folder
 
@@ -22,10 +23,16 @@ def upload_file(file: FileStorage, file_name: str, public_id: str):
         file_name (str): Desired name of the saved file, used to
         uniquely identify the file
     """
-    target_dir = find_or_create_static_dir()
     user = User.query.filter(User.public_id == public_id).first()
-    save_and_upload_file(file_name=file_name, file=file,
-                         folder=target_dir, user=user)
+    if user is None:
+        return common.create_response("fail", "Requested User not Found"), 401
+    target_dir = find_or_create_static_dir()
+    try:
+        save_and_upload_file(file_name=file_name, file=file,
+                             folder=target_dir, user=user)
+    except IntegrityError:
+        return common.create_response("fail", f"'{file_name}' already exists"), 403
+    return common.create_response("success", f"Successfully Uploaded '{file_name}' file"), 201
 
 
 def find_or_create_static_dir() -> Folder:
