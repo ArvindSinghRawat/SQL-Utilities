@@ -16,27 +16,16 @@ from ..service.file_upload_service import upload_file, validate_file_extension
 from ..util.common import create_response
 
 api = UploadDto.api
-
-parser = api.parser()
-parser.add_argument(
-    "file",
-    type=werkzeug.datastructures.FileStorage,
-    location="files")
-parser.add_argument(
-    "file_name",
-    type=str,
-    location="form")
-parser.add_argument(
-    "user_id",
-    type=str,
-    location="form"
-)
+_parser = UploadDto.upload_file_parser
 
 
 @api.route("/")
 class UploadCsvFile(Resource):
     """Used for File Upload related APIs"""
-    @api.expect(parser)
+    @api.expect(_parser)
+    @api.response(201, 'Successfully uploaded')
+    @api.response(401, 'Requesting User not found')
+    @api.response(403, 'File Extension not supported')
     def post(self):
         """Used to Upload files"""
         args = parser.parse_args()
