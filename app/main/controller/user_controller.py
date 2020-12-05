@@ -16,20 +16,20 @@ from ..dto.user_dto import UserDto
 from ..service.user_service import save_new_user, get_all_users, get_a_user
 
 api = UserDto.api
-_user_input = UserDto.user_input
-_user = UserDto.user
+_user_request = UserDto.user_request
+_user_response = UserDto.user_response
 
 
 @api.route("/")
 class UserList(Resource):
     """Used for Users related API"""
-    @api.marshal_list_with(_user, envelope="users")
+    @api.marshal_list_with(_user_response, envelope="users")
     def get(self):
         """Lists all registered users"""
         return get_all_users()
 
     @api.response(201, "User successfully created.")
-    @api.expect(_user_input, validate=True)
+    @api.expect(_user_request, validate=True)
     def post(self):
         """Creates a new User """
         data = request.json
@@ -38,10 +38,10 @@ class UserList(Resource):
 
 @api.route("/<public_id>")
 @api.param("public_id", "User identifier")
-@api.response(404, "User not found.")
+@api.response(403, "User not found.")
 class User(Resource):
     """Used for single user related API"""
-    @api.marshal_with(_user)
+    @api.marshal_with(_user_response)
     def get(self, public_id: str):
         """
         Get the User by their Public Id
@@ -54,6 +54,6 @@ class User(Resource):
         """
         user = get_a_user(public_id)
         if not user:
-            api.abort(404)
+            api.abort(403)
         else:
             return user

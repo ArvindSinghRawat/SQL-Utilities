@@ -12,9 +12,10 @@ class UserDto:
     """
     DTO for User related API
     """
-    api = Namespace("user",
+    api = Namespace("User",
                     description="User related operations")
-    user_input = api.model("user_input", {
+
+    user_request = api.model("User Request", {
         "email": fields.String(required=True,
                                description="User e-mail",
                                pattern=EMAIL_REGEX),
@@ -24,7 +25,8 @@ class UserDto:
                                   min_length=8,
                                   pattern=PASSWORD_REGEX)
     })
-    user = api.inherit("user", user_input, {
+
+    user_response = api.inherit("User Response", user_request, {
         "public_id": fields.String(description="User identifier",
                                    pattern=UUID_REGEX)
     })
