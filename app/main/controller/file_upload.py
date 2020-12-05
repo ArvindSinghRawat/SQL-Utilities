@@ -28,13 +28,13 @@ class UploadCsvFile(Resource):
     @api.response(403, 'File Extension not supported')
     def post(self):
         """Used to Upload files"""
-        args = parser.parse_args()
+        args = _parser.parse_args()
         input_file = args["file"]
         file_name = args["file_name"]
         user_id = args["user_id"]
         if not validate_file_extension(input_file.filename):
             response_object = create_response(
                 'fail', 'Extension of uploaded file is not supported')
-            return response_object, 400
+            return response_object, 403
 
-        upload_file(input_file, file_name, user_id)
+        return upload_file(input_file, file_name, user_id)
