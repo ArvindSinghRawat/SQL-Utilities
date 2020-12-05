@@ -11,5 +11,9 @@ def save_changes(data):
     Args:
         data (DB Entity like User): Data to be saved in Database
     """
-    db.session.add(data)
-    db.session.commit()
+    try:
+        db.session.add(data)
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        raise e
